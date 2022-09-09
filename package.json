@@ -15,12 +15,15 @@
         "alpinejs": "^3.0.6",
         "autoprefixer": "^10.4.7",
         "axios": "^0.21",
+        "inputmask": "^5.0.7",
+        "jquery": "^3.6.1",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.4.14",
         "tailwindcss": "^3.1.0"
     },
     "dependencies": {
+        "@alpinejs/mask": "^3.10.3",
         "autoprefixer": "^9.8.8",
         "lodash.merge": "^4.6.2",
         "node-sass": "^7.0.1",

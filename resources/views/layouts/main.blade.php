@@ -14,7 +14,10 @@
 
         <!-- CSS da aplicação -->
         <link rel="stylesheet" href="/css/styles.css">
+
         <script src="/js/scripts.js"></script>
+
+
     </head>
     <body>
       <header>

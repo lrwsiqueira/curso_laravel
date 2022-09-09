@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use LaravelLegends\PtBrValidator\Rules\FormatoCpf;
+use LaravelLegends\PtBrValidator\Rules\CpfOuCnpj;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -22,6 +24,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'identity' => ['required', 'string', 'max:14', 'unique:users', new FormatoCpf, new CpfOuCnpj ],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
@@ -29,6 +32,7 @@ class CreateNewUser implements CreatesNewUsers
 
         return User::create([
             'name' => $input['name'],
+            'identity' => $input['identity'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
